@@ -216,9 +216,9 @@ export const questionarios = [
     questoes: [
       {
         id: 21,
-        tipo: 1,
+        tipo: 2,
         label: 'Pergunta 21',
-        respostas: [1,1,1,1,1,1,1,1,1,1]
+        respostas: ['S','N','N','S','N','N','N','S','N','N']
       },
       {
         id: 22,

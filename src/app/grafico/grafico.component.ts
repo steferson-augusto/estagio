@@ -39,8 +39,8 @@ export class GraficoComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.firstChild.paramMap.get('id')
     this.questionario = this.questionarioService.getQuestionarioById(id)
-    console.log(this.single)
-    this.questionario.questoes.map(q => {
+    const questions = this.questionario.questoes.filter(q => q.tipo == 1)
+    questions.map(q => {
       const value = q.respostas.reduce((soma, nota) => soma += nota, 0) / q.respostas.length;
       const val = {name: q.label, value}
       this.data.push(val)
