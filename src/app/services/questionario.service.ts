@@ -21,7 +21,7 @@ export class QuestionarioService {
 
   constructor() { }
 
-  getLabelsQuestionarios() {
+  getLabelsQuestionarios() {  //retorna label e id dos questionarios, usado para apresentação no menu lateral
     const questions = questionarios.map(q => {
       const quest = {
         id: q.id,
@@ -32,13 +32,13 @@ export class QuestionarioService {
     return questions
   }
 
-  filterById(id){
+  filterById(id){ //filtra o questionario pelo id
     return function filter(value){
       return value.id == id
     }
   }
 
-  getQuestionarioById(id){
+  getQuestionarioById(id){  //retorna o questionario que possui o id passado como parametro
     return questionarios.filter(this.filterById(id))[0]
   }
 }

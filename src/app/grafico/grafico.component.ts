@@ -33,17 +33,17 @@ export class GraficoComponent implements OnInit {
     private route: ActivatedRoute,
     private questionarioService: QuestionarioService
     ) {
-    Object.assign(this, { single, multi })
+    Object.assign(this, { single, multi }) //pode remover, são apenas exemplos
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.firstChild.paramMap.get('id')
-    this.questionario = this.questionarioService.getQuestionarioById(id)
-    const questions = this.questionario.questoes.filter(q => q.tipo == 1)
+    const id = this.route.snapshot.firstChild.paramMap.get('id')  //pega o id do questionario pela rota
+    this.questionario = this.questionarioService.getQuestionarioById(id)  //pega questionario pelo respectivo id
+    const questions = this.questionario.questoes.filter(q => q.tipo == 1) //seleciona as questoes do questionario que não são do "tipo 1"
     questions.map(q => {
-      const value = q.respostas.reduce((soma, nota) => soma += nota, 0) / q.respostas.length;
-      const val = {name: q.label, value}
-      this.data.push(val)
+      const value = q.respostas.reduce((soma, nota) => soma += nota, 0) / q.respostas.length  //calcula a media das respostas de cada questao
+      const val = { name: q.label, value }  //salva os valores no padrão da biblioteca ngx-charts para posterior exibição
+      this.data.push(val) //adiciona o valor na variável a ser usada como base no gráfico
     })
     console.log(this.data)
   }
