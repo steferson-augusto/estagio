@@ -33,11 +33,12 @@ export class MenuComponent implements OnInit{
 
   f(id){
     console.log(id)
+    console.log(this.r)
     this.reloadWithNewId(id)
   }
 
   reloadWithNewId(id:number) {
-    this.r.navigateByUrl('graficos/questionario' + id).then(e => {
+    this.r.navigateByUrl('/graficos/questionario' + id).then(e => {
       if (e) {
         console.log("Navigation is successful!");
       } else {
