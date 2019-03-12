@@ -1,13 +1,13 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { GraficoComponent } from './grafico/grafico.component'
 //import { AuthGuard } from './_guards';
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'graficos',
+        component: HomeComponent,
         pathMatch: 'full'
         //canActivate: [AuthGuard]
     },

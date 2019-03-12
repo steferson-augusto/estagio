@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionarioService, Questionario } from '../services/questionario.service'
 import { single, multi } from '../data';
@@ -9,6 +9,7 @@ import { single, multi } from '../data';
   styleUrls: ['./grafico.component.css']
 })
 export class GraficoComponent implements OnInit {
+  @Input() id_questionario: any
   questionario: Questionario;
   single: any[];
   multi: any[];
@@ -38,6 +39,8 @@ export class GraficoComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.firstChild.paramMap.get('id')  //pega o id do questionario pela rota
+
+    console.log(this.id_questionario)
     this.questionario = this.questionarioService.getQuestionarioById(id)  //pega questionario pelo respectivo id
     const questions = this.questionario.questoes.filter(q => q.tipo == 1) //seleciona as questoes do questionario que não são do "tipo 1"
     questions.map(q => {  //itera sobre as questoes

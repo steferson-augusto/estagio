@@ -12,12 +12,14 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MenuComponent } from './menu/menu.component';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { GraficoComponent } from './grafico/grafico.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     GraficoComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

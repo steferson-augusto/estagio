@@ -5,7 +5,7 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="graficos/questionario/{{question.id}}" *ngFor='let question of questionarios'>{{question.label}}</a>
+      <a mat-list-item routerLink="graficos/questionario/{{question.id}}" (click)="f(question.id)" *ngFor='let question of questionarios'>{{question.label}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
