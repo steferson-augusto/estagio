@@ -5,6 +5,7 @@ export class Questao {
   id: any;
   tipo: number;
   label: string;
+  respostas?: any[];
 }
 
 export class Questionario {
@@ -20,14 +21,24 @@ export class QuestionarioService {
 
   constructor() { }
 
-  getLabelsQuestionarios() { 
+  getLabelsQuestionarios() {
     const questions = questionarios.map(q => {
       const quest = {
         id: q.id,
         label: q.label
       }
       return quest
-    }) 
+    })
     return questions
+  }
+
+  filterById(id){
+    return function filter(value){
+      return value.id == id
+    }
+  }
+
+  getQuestionarioById(id){
+    return questionarios.filter(this.filterById(id))[0]
   }
 }
