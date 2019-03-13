@@ -38,7 +38,7 @@ export class GraficoComponent implements OnInit {
   }
 
   start(id){
-    this.data = []  //limpa a variável
+    this.data = []  //limpa o vetor
     this.questionario = this.questionarioService.getQuestionarioById(id)  //pega questionario pelo respectivo id
     const questions = this.questionario.questoes.filter(q => q.tipo == 1) //seleciona as questoes do questionario que não são do "tipo 1"
     questions.map(q => {  //"itera" sobre as questoes
