@@ -14,10 +14,10 @@ const appRoutes: Routes = [
     {
         path: 'graficos',
         component: GraficoComponent,
-        children: [
-            {path: '', redirectTo: 'questionario/1', pathMatch: 'full'},
-            {path: 'questionario/:id', component: GraficoComponent},
-        ]
+        // children: [
+        //     {path: '', redirectTo: 'questionario/1', pathMatch: 'full'},
+        //     {path: 'questionario/:id', component: GraficoComponent},
+        // ]
     },
 
     // otherwise redirect to home

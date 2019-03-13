@@ -1,5 +1,6 @@
 <!-- <ngx-charts-bar-vertical-2d -->
-<ngx-charts-bar-vertical id="grafico"
+<p>{{ questionario.label }}</p>
+<ngx-charts-bar-vertical
   [view]="view"
   [scheme]="colorScheme"
   [results]="data"
@@ -14,3 +15,11 @@
   (select)="onSelect($event)">
 </ngx-charts-bar-vertical>
 <!-- </ngx-charts-bar-vertical-2d> -->
+
+
+<ngx-charts-advanced-pie-chart
+  [view]="view2"
+  [scheme]="colorScheme"
+  [results]="dataDetalhes"
+  [gradient]="gradient">
+</ngx-charts-advanced-pie-chart>
