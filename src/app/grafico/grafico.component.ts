@@ -38,7 +38,7 @@ export class GraficoComponent implements OnInit {
   }
 
   start(id){
-    this.data = []
+    this.data = []  //limpa a variável
     this.questionario = this.questionarioService.getQuestionarioById(id)  //pega questionario pelo respectivo id
     const questions = this.questionario.questoes.filter(q => q.tipo == 1) //seleciona as questoes do questionario que não são do "tipo 1"
     questions.map(q => {  //"itera" sobre as questoes
@@ -46,27 +46,26 @@ export class GraficoComponent implements OnInit {
       const val = { name: q.label, value }  //salva os valores no padrão da biblioteca ngx-charts para posterior exibição
       this.data.push(val) //adiciona o valor na variável a ser usada como base no gráfico
     })
-    this.startDetalhes(this.questionario.questoes[0].label)
+    this.startDetalhes(this.questionario.questoes[0].label) //"configura" o segundo grafico
   }
 
   startDetalhes(e){
-    e.name ? e = e.name : e = e
-    const question = this.questionario.questoes.filter(q => q.label == e)[0]
-    const possibilidades = [1,2,3,4,5]
-    const respostas = possibilidades.map(p => {
-      return question.respostas.filter(q => q == p).reduce((soma, nota) => soma+=1, 0)
+    e.name ? e = e.name : e = e //esse parametro pode ser recebido de 2 formas, como objeto ou como string, por isso passo para apenas "e"
+    const question = this.questionario.questoes.filter(q => q.label == e)[0]  //seleciona a pergunta com parametro onde label == "e"
+    const possibilidades = [1,2,3,4,5]  //alternativas possíveis, fazer dinamico?
+    const respostas = possibilidades.map(p => { //"itera" sobre as possibilidades
+      return question.respostas.filter(q => q == p).reduce((soma, nota) => soma+=1, 0)  //soma as ocorrencias da possibilidade em questao
     })
-    this.dataDetalhes = []
-    respostas.map((r,i) => {
-      const val = { name: `Opção ${i+1}`, value: r }
-      this.dataDetalhes.push(val)
+    this.dataDetalhes = []  //limpa o vetor
+    respostas.map((r,i) => {  //"itera" sobre as respostas
+      const val = { name: `Opção ${i+1}`, value: r }  //formata no padrão de uso do ngx-charts
+      this.dataDetalhes.push(val) //adiciona na variavel base do grafico
     })
-    this.pergunta = e
+    this.pergunta = e //armazena o label da pergunta selecionada
   }
 
   ngOnInit() {
-    this.dataDetalhes = this.single
-    this.start(1)
+    this.start(1) //1 nao eh uma boa ideia, deixar dinamico
   }
 
   onSelect(e){
